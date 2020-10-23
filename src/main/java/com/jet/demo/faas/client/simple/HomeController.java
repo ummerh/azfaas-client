@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-	@Value("${app.home.url}")
+	@Value("${baseUrl}")
 	private String appUrl;
 
 	@RequestMapping("/")

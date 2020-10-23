@@ -1,0 +1,26 @@
+baseUrl: http://localhost:8080
+logging:
+ level:
+  org:
+   springframework: INFO
+spring:
+ mvc:
+  view:
+   prefix: /WEB-INF/
+   suffix: .jsp 
+ security:
+  oauth2:
+   cient:
+    registration:
+     b2c-github:
+      provider: b2c-github-provider
+      client-id: d50705fd-44f6-4661-aad1-63d2aee25d17
+      client-secret: Y_pfwrpqF4Ks.84Cw6p07NHhhS-Dy2x5.ms
+      authorization-grant-type: authorization-code
+      redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+      scope: openid
+     provider:
+      b2c-github-provider:
+       authorization-uri: https://jacksontestb2c.b2clogin.com/jacksontestb2c.onmicrosoft.com/b2c_1_faasdemo_signup_signin/oauth2/v2.0/authorize
+       token-uri: https://jacksontestb2c.b2clogin.com/jacksontestb2c.onmicrosoft.com/b2c_1_faasdemo_signup_signin/oauth2/v2.0/token
+       jwk-set-uri: https://jacksontestb2c.b2clogin.com/jacksontestb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_faasdemo_signup_signin
