@@ -10,7 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable();
+		http.cors().disable();
+		http.csrf().disable();
 		http.authorizeRequests().antMatchers("/oauth2", "login").permitAll().anyRequest().authenticated().and()
 				.oauth2Login();
 	}

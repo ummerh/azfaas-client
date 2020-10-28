@@ -32678,6 +32678,8 @@ var HomeWindow = __webpack_require__(/*! ./HomeWindow.js */ "./src/jsx/HomeWindo
 
 var Navigation = __webpack_require__(/*! ./Navigation.js */ "./src/jsx/Navigation.js").Navigation;
 
+var SentimentDetector = __webpack_require__(/*! ./SentimentDetector.js */ "./src/jsx/SentimentDetector.js").SentimentDetector;
+
 
 var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
@@ -32698,7 +32700,10 @@ var Home = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Switch"], null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
         path: "/",
         exact: true
-      }, /*#__PURE__*/React.createElement(HomeWindow, null)))));
+      }, /*#__PURE__*/React.createElement(HomeWindow, null)), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+        path: "/comment/analyze",
+        exact: true
+      }, /*#__PURE__*/React.createElement(SentimentDetector, null)))));
     }
   }]);
 
@@ -32914,7 +32919,7 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
         className: "nav-item"
       }, /*#__PURE__*/React.createElement("a", {
         className: "nav-link",
-        href: this.props.path + "/#/app/demo"
+        href: this.props.path + "/#/comment/analyze"
       }, "Sentiment Detector")), /*#__PURE__*/React.createElement("li", {
         className: "nav-item"
       }, /*#__PURE__*/React.createElement("a", {
@@ -32930,6 +32935,160 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Navigation;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/SentimentDetector.js":
+/*!**************************************!*\
+  !*** ./src/jsx/SentimentDetector.js ***!
+  \**************************************/
+/*! exports provided: SentimentDetector */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SentimentDetector", function() { return SentimentDetector; });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+var SentimentDetector = /*#__PURE__*/function (_React$Component) {
+  _inherits(SentimentDetector, _React$Component);
+
+  var _super = _createSuper(SentimentDetector);
+
+  function SentimentDetector(props) {
+    var _this;
+
+    _classCallCheck(this, SentimentDetector);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      status: null,
+      req: {
+        author: givenName,
+        text: ""
+      },
+      isLoaded: true,
+      response: {
+        sentiment: 'neutral'
+      }
+    };
+    _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    _this.submitChange = _this.submitChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(SentimentDetector, [{
+    key: "handleInputChange",
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.name === 'isGoing' ? target.checked : target.value;
+      var name = target.id;
+      var newReq = this.state.req;
+      newReq[name] = value;
+      this.setState({
+        req: newReq,
+        status: "Text changed.",
+        response: {
+          sentiment: 'neutral'
+        }
+      });
+    }
+  }, {
+    key: "submitChange",
+    value: function submitChange(event) {
+      var _this2 = this;
+
+      fetch("https://eforms.azure-api.net/jetdemofaas/DetectSentiment", {
+        method: 'POST',
+        body: JSON.stringify(this.state.req),
+        headers: {
+          'Content-Type': 'application/json',
+          'Ocp-Apim-Subscription-Key': '65f72c21040a4a30b95712b0ded1de38',
+          'Authorization': 'Bearer ' + jwtToken
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (result) {
+        _this2.setState({
+          isLoaded: true,
+          status: "Sentiment is " + result.sentiment + ".",
+          response: result
+        });
+      }, function (error) {
+        _this2.setState({
+          isLoaded: true,
+          status: "Call failed.",
+          error: error
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.isLoaded) {
+        return /*#__PURE__*/React.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "col-lg-2"
+        }), /*#__PURE__*/React.createElement("div", {
+          className: "col-lg-6"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: this.state.response.sentiment
+        }, /*#__PURE__*/React.createElement("h4", null, "Text Analytics Form"), /*#__PURE__*/React.createElement("mark", null, this.state.status), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
+          className: "form-group"
+        }, /*#__PURE__*/React.createElement("label", {
+          htmlFor: "text"
+        }, "Text For Analysis"), /*#__PURE__*/React.createElement("textarea", {
+          className: "form-control",
+          id: "text",
+          rows: "3",
+          value: this.state.req.text,
+          onChange: this.handleInputChange
+        })))), /*#__PURE__*/React.createElement("button", {
+          type: "button",
+          className: "btn btn-primary",
+          onClick: this.submitChange,
+          disabled: this.state.status != 'Text changed.'
+        }, "Analyze Sentiment")));
+      }
+
+      return /*#__PURE__*/React.createElement("div", {
+        className: "spinner-border",
+        role: "status"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "sr-only"
+      }, "Loading..."));
+    }
+  }]);
+
+  return SentimentDetector;
 }(React.Component);
 
 /***/ }),

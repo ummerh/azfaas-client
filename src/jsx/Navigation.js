@@ -18,7 +18,7 @@ export class Navigation extends React.Component {
 
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav mr-auto">
-						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/app/demo"}>Sentiment Detector</a></li>						
+						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/comment/analyze"}>Sentiment Detector</a></li>						
 						<li className="nav-item"><a className="nav-link disabled" href="#"
 							aria-disabled="true">API</a></li>
 					</ul>
