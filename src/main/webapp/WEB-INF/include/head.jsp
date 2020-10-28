@@ -11,17 +11,17 @@
 	crossorigin="anonymous">
 <style>
 .neutral{
-	color: black;
+	background-color: white;
 }
 .positive{
-	color:aquamarine;
+	background-color: lightgreen;
 }
 
 .negative{
-	color:orangered;
+	background-color: orangered;
 }
 .mixed{
-	color: gray;
+	background-color: gray;
 }
 </style>	
 

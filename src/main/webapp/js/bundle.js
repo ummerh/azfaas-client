@@ -33025,6 +33025,9 @@ var SentimentDetector = /*#__PURE__*/function (_React$Component) {
     value: function submitChange(event) {
       var _this2 = this;
 
+      this.setState({
+        status: "Busy..."
+      });
       fetch("https://eforms.azure-api.net/jetdemofaas/DetectSentiment", {
         method: 'POST',
         body: JSON.stringify(this.state.req),
@@ -33061,7 +33064,7 @@ var SentimentDetector = /*#__PURE__*/function (_React$Component) {
           className: "col-lg-6"
         }, /*#__PURE__*/React.createElement("div", {
           className: this.state.response.sentiment
-        }, /*#__PURE__*/React.createElement("h4", null, "Text Analytics Form"), /*#__PURE__*/React.createElement("mark", null, this.state.status), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
+        }, /*#__PURE__*/React.createElement("h4", null, "Text Analytics Form"), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
           className: "form-group"
         }, /*#__PURE__*/React.createElement("label", {
           htmlFor: "text"
@@ -33071,7 +33074,7 @@ var SentimentDetector = /*#__PURE__*/function (_React$Component) {
           rows: "3",
           value: this.state.req.text,
           onChange: this.handleInputChange
-        })))), /*#__PURE__*/React.createElement("button", {
+        }))), /*#__PURE__*/React.createElement("mark", null, this.state.status)), /*#__PURE__*/React.createElement("button", {
           type: "button",
           className: "btn btn-primary",
           onClick: this.submitChange,
