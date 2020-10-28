@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jet.eacloud.demo.faas</groupId>
-	<artifactId>client</artifactId>
+	<artifactId>azfaasclient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>spaclient</name>
@@ -19,6 +19,9 @@
 	<properties>
 		<java.version>11</java.version>
 		<azure.version>2.2.0</azure.version>
+		<jib-maven-plugin.version>2.5.2</jib-maven-plugin.version>
+		<docker.image.prefix>eacloudacr.azurecr.io</docker.image.prefix>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -130,6 +133,19 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>jib-maven-plugin</artifactId>
+				<groupId>com.google.cloud.tools</groupId>
+				<version>${jib-maven-plugin.version}</version>
+				<configuration>
+					<from>
+						<image>mcr.microsoft.com/java/jre:8-zulu-alpine</image>
+					</from>
+					<to>
+						<image>${docker.image.prefix}/${project.artifactId}</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
