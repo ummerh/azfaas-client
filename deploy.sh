@@ -5,8 +5,15 @@ login_docker(){
 }
 build_app(){
    git pull
-   mvn compile jib:build -DskipTests
+   mvn clean package -DskipTests
+}
+
+build_docker(){
+   docker build . -t eacloudacr.azurecr.io/eacloud/azfaas-client
+   docker tag eacloudacr.azurecr.io/eacloud/azfaas-client eacloudacr.azurecr.io/eacloud/azfaas-client:0.0.1
+   docker push eacloudacr.azurecr.io/eacloud/azfaas-client
 }
 
 login_docker
 build_app
+build_docker
