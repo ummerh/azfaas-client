@@ -10,7 +10,7 @@ build_app(){
 
 build_docker(){
    docker build . -t eacloudacr.azurecr.io/eacloud/azfaas-client
-   docker tag eacloudacr.azurecr.io/eacloud/azfaas-client eacloudacr.azurecr.io/eacloud/azfaas-client:0.0.1
+   docker tag eacloudacr.azurecr.io/eacloud/azfaas-client eacloudacr.azurecr.io/eacloud/azfaas-client:0.0.2
    docker push eacloudacr.azurecr.io/eacloud/azfaas-client
 }
 
