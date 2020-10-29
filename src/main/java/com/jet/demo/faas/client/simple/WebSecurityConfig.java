@@ -12,7 +12,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().disable();
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/oauth2", "login").permitAll().anyRequest().authenticated().and()
-				.oauth2Login();
+		http.authorizeRequests().antMatchers("/oauth2", "/login", "/images/", "/css/", "/js/").permitAll().anyRequest()
+				.authenticated().and().oauth2Login();
 	}
 }

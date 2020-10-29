@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
 	@RequestMapping("/")
-	public ModelAndView home(HttpServletRequest req) {
+	public ModelAndView index(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("home");
 		if (SecurityContextHolder.getContext() != null && SecurityContextHolder.getContext().getAuthentication() != null
 				&& SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
@@ -28,5 +27,10 @@ public class HomeController {
 			}
 		}
 		return mv;
+	}
+
+	@RequestMapping("/home")
+	public ModelAndView home(HttpServletRequest req) {
+		return index(req);
 	}
 }

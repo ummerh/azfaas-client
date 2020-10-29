@@ -17,3 +17,5 @@ build_docker(){
 login_docker
 build_app
 build_docker
+
+#mvn azure-webapp:deploy
