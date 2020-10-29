@@ -12,7 +12,7 @@
 	<groupId>com.jet.eacloud.demo.faas</groupId>
 	<artifactId>client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>spaclient</name>
 	<description>Demo SPA Client</description>
 
@@ -157,7 +157,7 @@
 							<resource>
 								<directory>${project.basedir}/target</directory>
 								<includes>
-									<include>*.jar</include>
+									<include>*.war</include>
 								</includes>
 							</resource>
 						</resources>
