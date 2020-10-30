@@ -12,7 +12,7 @@ export class SentimentDetector extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { status: null, req: { author: givenName, text: "" }, isLoaded: true, response: { sentiment: 'neutral' } };
+		this.state = { status: "No text.", req: { author: givenName, text: "" }, isLoaded: true, response: { sentiment: 'neutral' } };
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.submitChange = this.submitChange.bind(this);
 	}
@@ -67,7 +67,7 @@ export class SentimentDetector extends React.Component {
 							<textarea className="form-control" id="text" rows="3" value={this.state.req.text} onChange={this.handleInputChange}></textarea>
 						</div>
 					</form>
-					<mark>{this.state.status}</mark>
+					<mark>Status: {this.state.status}</mark>
 				</div>
 				<button type="button" className="btn btn-primary" onClick={this.submitChange} disabled={this.state.status != 'Text changed.'}>Analyze Sentiment</button>
 			</div></div>);
