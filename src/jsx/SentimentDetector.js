@@ -58,8 +58,9 @@ export class SentimentDetector extends React.Component {
 	}
 	render() {
 		if (this.state.isLoaded) {
-			return (<div className="row" ><div className="col-lg-2"></div><div className="col-lg-6">
+			return (<div className="container-fluid"><div className="row" ><div className="col-lg-2"></div><div className="col-lg-6">
 				<div className={this.state.response.sentiment}>
+					<br/>
 					<h4>Text Analytics Form</h4>
 					<form>
 						<div className="form-group">
@@ -70,7 +71,7 @@ export class SentimentDetector extends React.Component {
 					<mark>Status: {this.state.status}</mark>
 				</div>
 				<button type="button" className="btn btn-primary" onClick={this.submitChange} disabled={this.state.status != 'Text changed.'}>Analyze Sentiment</button>
-			</div></div>);
+			</div></div></div>);
 		}
 		return (
 			<div className="spinner-border" role="status">
