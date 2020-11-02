@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const HomeWindow = require("./HomeWindow.js").HomeWindow;
 const Navigation = require("./Navigation.js").Navigation;
 const SentimentDetector = require("./SentimentDetector.js").SentimentDetector;
+const JacksonGallery = require("./JacksonGallery.js").JacksonGallery;
 
 import {
 	HashRouter as Router,
@@ -23,7 +24,9 @@ export class Home extends React.Component {
 						<Route path="/comment/analyze" exact>
 							<SentimentDetector />
 						</Route>
-						
+						<Route path="/images/jackson" exact>
+							<JacksonGallery />
+						</Route>						
 					</Switch>
 				</div>
 			</Router>
