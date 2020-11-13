@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -32,12 +31,13 @@ import com.nimbusds.jwt.SignedJWT;
 @RequestMapping("/idp")
 public class OpenIdController {
 
+	private static final String KID123 = "kid123";
 	// Prepare the RSA Key Pair
 	private static RSAKey rsaJWK = null;
 	private static RSAKey rsaPublicJWK = null;
 	static {
 		try {
-			rsaJWK = new RSAKeyGenerator(2048).keyID("kid123").generate();
+			rsaJWK = new RSAKeyGenerator(2048).keyID(KID123).generate();
 			rsaPublicJWK = rsaJWK.toPublicJWK();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -112,22 +112,15 @@ public class OpenIdController {
 	}
 
 	@RequestMapping("/discovery/v2.0/keys")
-	public @ResponseBody String getKeys(HttpServletRequest req, @RequestParam(required = false) String client_id,
-			@RequestParam(required = false) String client_secret, @RequestParam(required = false) String refresh_token,
-			@RequestParam(required = false) String grant_type,
-			@RequestParam(required = false, defaultValue = "openid") String scope,
-			@RequestParam(required = false) String redirect_uri) throws Exception {
-		return jwkSet().toString();
-	}
-
-	public JWKSet jwkSet() {
+	public @ResponseBody String getKeys() throws Exception {
 		RSAKey.Builder builder = new RSAKey.Builder(rsaPublicJWK).keyUse(KeyUse.SIGNATURE).algorithm(JWSAlgorithm.RS256)
-				.keyID("kid123");
-		return new JWKSet(builder.build());
+				.keyID(KID123);
+		return new JWKSet(builder.build()).toString();
 	}
 
 	@RequestMapping("/authorize")
-	public RedirectView authorize(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public RedirectView authorize(HttpServletRequest req, @RequestParam String userName,
+			@RequestParam String userPassword) throws Exception {
 		HttpSession session = req.getSession();
 		String code = UUID.randomUUID().toString();
 		session.setAttribute("code", code);

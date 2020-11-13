@@ -38828,15 +38828,13 @@ var JacksonGallery = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("div", {
-        className: "container-fluid"
-      }, /*#__PURE__*/React.createElement("h3", null, "Jackson National, Lansing 8CW"), /*#__PURE__*/React.createElement("div", {
         className: "row"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "col-lg-6"
-      }, /*#__PURE__*/React.createElement(react_image_gallery__WEBPACK_IMPORTED_MODULE_0___default.a, {
+      }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+        className: "col-lg-2"
+      }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Jackson National, Lansing 8CW"), /*#__PURE__*/React.createElement(react_image_gallery__WEBPACK_IMPORTED_MODULE_0___default.a, {
         items: images,
-        showThumbnails: "true"
-      }))));
+        showThumbnails: true
+      })));
     }
   }]);
 
@@ -38918,20 +38916,22 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("div", {
-        className: "container-fluid"
-      }, /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("div", {
         className: "row"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "col-lg-4"
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h4", null, "Login"), /*#__PURE__*/React.createElement("form", {
+      }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+        className: "col-md-4"
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "col-md-4"
+      }, /*#__PURE__*/React.createElement("h4", null, "Login"), /*#__PURE__*/React.createElement("form", {
         action: "../idp/authorize"
       }, /*#__PURE__*/React.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/React.createElement("label", {
         htmlFor: "userName"
-      }, "User Name"), /*#__PURE__*/React.createElement("input", {
+      }, "User Name*"), /*#__PURE__*/React.createElement("input", {
+        required: true,
         className: "form-control",
         id: "userName",
+        name: "userName",
         type: "text",
         value: this.state.user.userName,
         onChange: this.handleInputChange
@@ -38939,9 +38939,11 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
         className: "form-group"
       }, /*#__PURE__*/React.createElement("label", {
         htmlFor: "userPassword"
-      }, "Password"), /*#__PURE__*/React.createElement("input", {
+      }, "Password*"), /*#__PURE__*/React.createElement("input", {
+        required: true,
         className: "form-control",
         id: "userPassword",
+        name: "userPassword",
         type: "password",
         value: this.state.user.userPassword,
         onChange: this.handleInputChange
@@ -38949,7 +38951,9 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         className: "btn btn-primary",
         value: "Submit"
-      })))))));
+      }))), /*#__PURE__*/React.createElement("div", {
+        className: "col-md-4"
+      }));
     }
   }]);
 
@@ -39181,16 +39185,14 @@ var SentimentDetector = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       if (this.state.isLoaded) {
         return /*#__PURE__*/React.createElement("div", {
-          className: "container-fluid"
-        }, /*#__PURE__*/React.createElement("div", {
           className: "row"
-        }, /*#__PURE__*/React.createElement("div", {
+        }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
           className: "col-lg-2"
         }), /*#__PURE__*/React.createElement("div", {
           className: "col-lg-6"
         }, /*#__PURE__*/React.createElement("div", {
           className: this.state.response.sentiment
-        }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h4", null, "Text Analytics Form"), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
+        }, /*#__PURE__*/React.createElement("h4", null, "Text Analytics Form"), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
           className: "form-group"
         }, /*#__PURE__*/React.createElement("label", {
           htmlFor: "text"
@@ -39205,7 +39207,7 @@ var SentimentDetector = /*#__PURE__*/function (_React$Component) {
           className: "btn btn-primary",
           onClick: this.submitChange,
           disabled: this.state.status != 'Text changed.'
-        }, "Analyze Sentiment"))));
+        }, "Analyze Sentiment")));
       }
 
       return /*#__PURE__*/React.createElement("div", {

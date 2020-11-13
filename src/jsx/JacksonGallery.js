@@ -41,6 +41,6 @@ const images = [
  
 export class JacksonGallery extends React.Component {
   render() {
-    return (<div className="container-fluid"><h3>Jackson National, Lansing 8CW</h3><div className="row" ><div className="col-lg-6"><ImageGallery items={images} showThumbnails="true" /></div></div></div>);
+    return (<div className="row" ><br/><div className="col-lg-2"></div><div><h3>Jackson National, Lansing 8CW</h3><ImageGallery items={images} showThumbnails={true} /></div></div>);
   }
 }
