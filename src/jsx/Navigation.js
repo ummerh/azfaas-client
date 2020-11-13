@@ -18,13 +18,15 @@ export class Navigation extends React.Component {
 
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav mr-auto">
-						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/comment/analyze"}>Sentiment Detector</a></li>						
-						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/images/jackson"}>Image Gallery</a></li>						
+						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/comment/analyze"}>Sentiment Detector</a></li>
+						<li className="nav-item"><a className="nav-link" href={this.props.path + "/#/images/jackson"}>Image Gallery</a></li>
 						<li className="nav-item"><a className="nav-link disabled" href="#"
 							aria-disabled="true">API</a></li>
 					</ul>
 					<ul className="navbar-nav navbar-right">
-						<li className="nav-item nav-link">{givenName?givenName:''}</li>
+						<li className="nav-item nav-link">{givenName ? givenName : ''}</li>
+						<li className="nav-item"><a className="nav-link disabled" href="#"
+							aria-disabled="true">v0.0.1</a></li>
 					</ul>
 				</div>
 			</nav>);

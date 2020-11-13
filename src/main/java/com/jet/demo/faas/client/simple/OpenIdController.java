@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
@@ -56,7 +57,7 @@ public class OpenIdController {
 		return OpenIdConfiguration.DEFAULT(appUrl + "/idp");
 	}
 
-	@RequestMapping("/oauth2/v2.0/authorize")
+	@RequestMapping(path = "/oauth2/v2.0/authorize", method = { RequestMethod.GET, RequestMethod.POST })
 	public RedirectView authorize(HttpServletRequest req, @RequestParam String client_id, @RequestParam String nonce,
 			@RequestParam String response_type, @RequestParam String scope,
 			@RequestParam(required = false, defaultValue = "login") String prompt, @RequestParam String redirect_uri,
@@ -85,7 +86,7 @@ public class OpenIdController {
 		return new RedirectView(post_logout_redirect_uri);
 	}
 
-	@RequestMapping("/oauth2/v2.0/token")
+	@RequestMapping(path = "/oauth2/v2.0/token", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody OpenIdToken issueToken(@RequestParam String client_id, @RequestParam String client_secret,
 			@RequestParam String code, @RequestParam String grant_type,
 			@RequestParam(required = false, defaultValue = "openid") String scope, @RequestParam String redirect_uri)
@@ -118,7 +119,7 @@ public class OpenIdController {
 		return new JWKSet(builder.build()).toString();
 	}
 
-	@RequestMapping("/authorize")
+	@RequestMapping(path = "/authorize", method = { RequestMethod.GET, RequestMethod.POST })
 	public RedirectView authorize(HttpServletRequest req, @RequestParam String userName,
 			@RequestParam String userPassword) throws Exception {
 		HttpSession session = req.getSession();
