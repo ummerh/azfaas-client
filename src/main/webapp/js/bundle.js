@@ -38569,6 +38569,8 @@ var SentimentDetector = __webpack_require__(/*! ./SentimentDetector.js */ "./src
 
 var JacksonGallery = __webpack_require__(/*! ./JacksonGallery.js */ "./src/jsx/JacksonGallery.js").JacksonGallery;
 
+var LoginForm = __webpack_require__(/*! ./LoginForm.js */ "./src/jsx/LoginForm.js").LoginForm;
+
 
 var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
@@ -38595,7 +38597,10 @@ var Home = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/React.createElement(SentimentDetector, null)), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
         path: "/images/jackson",
         exact: true
-      }, /*#__PURE__*/React.createElement(JacksonGallery, null)))));
+      }, /*#__PURE__*/React.createElement(JacksonGallery, null)), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
+        path: "/user/login",
+        exact: true
+      }, /*#__PURE__*/React.createElement(LoginForm, null)))));
     }
   }]);
 
@@ -38824,11 +38829,11 @@ var JacksonGallery = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/React.createElement("div", {
         className: "container-fluid"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "row"
       }, /*#__PURE__*/React.createElement("h3", null, "Jackson National, Lansing 8CW"), /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
         className: "col-lg-6"
-      }, ")", /*#__PURE__*/React.createElement(react_image_gallery__WEBPACK_IMPORTED_MODULE_0___default.a, {
+      }, /*#__PURE__*/React.createElement(react_image_gallery__WEBPACK_IMPORTED_MODULE_0___default.a, {
         items: images,
         showThumbnails: "true"
       }))));
@@ -38836,6 +38841,119 @@ var JacksonGallery = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return JacksonGallery;
+}(React.Component);
+
+/***/ }),
+
+/***/ "./src/jsx/LoginForm.js":
+/*!******************************!*\
+  !*** ./src/jsx/LoginForm.js ***!
+  \******************************/
+/*! exports provided: LoginForm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginForm", function() { return LoginForm; });
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var LoginForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(LoginForm, _React$Component);
+
+  var _super = _createSuper(LoginForm);
+
+  function LoginForm(props) {
+    var _this;
+
+    _classCallCheck(this, LoginForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      user: {
+        userName: "",
+        userPassword: ""
+      }
+    };
+    _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(LoginForm, [{
+    key: "handleInputChange",
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.name === 'isGoing' ? target.checked : target.value;
+      var name = target.id;
+      var usr = this.state.user;
+      usr[name] = value;
+      this.setState({
+        user: usr
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "container-fluid"
+      }, /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "col-lg-4"
+      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h4", null, "Login"), /*#__PURE__*/React.createElement("form", {
+        action: "../idp/authorize"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/React.createElement("label", {
+        htmlFor: "userName"
+      }, "User Name"), /*#__PURE__*/React.createElement("input", {
+        className: "form-control",
+        id: "userName",
+        type: "text",
+        value: this.state.user.userName,
+        onChange: this.handleInputChange
+      })), /*#__PURE__*/React.createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/React.createElement("label", {
+        htmlFor: "userPassword"
+      }, "Password"), /*#__PURE__*/React.createElement("input", {
+        className: "form-control",
+        id: "userPassword",
+        type: "password",
+        value: this.state.user.userPassword,
+        onChange: this.handleInputChange
+      })), /*#__PURE__*/React.createElement("input", {
+        type: "submit",
+        className: "btn btn-primary",
+        value: "Submit"
+      })))))));
+    }
+  }]);
+
+  return LoginForm;
 }(React.Component);
 
 /***/ }),

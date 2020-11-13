@@ -4,6 +4,7 @@ const HomeWindow = require("./HomeWindow.js").HomeWindow;
 const Navigation = require("./Navigation.js").Navigation;
 const SentimentDetector = require("./SentimentDetector.js").SentimentDetector;
 const JacksonGallery = require("./JacksonGallery.js").JacksonGallery;
+const LoginForm = require("./LoginForm.js").LoginForm;
 
 import {
 	HashRouter as Router,
@@ -26,6 +27,9 @@ export class Home extends React.Component {
 						</Route>
 						<Route path="/images/jackson" exact>
 							<JacksonGallery />
+						</Route>
+						<Route path="/user/login" exact>
+							<LoginForm />
 						</Route>						
 					</Switch>
 				</div>

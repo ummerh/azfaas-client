@@ -1,6 +1,7 @@
 package com.jet.demo.faas.client.simple;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -32,5 +33,15 @@ public class HomeController {
 	@RequestMapping("/home")
 	public ModelAndView home(HttpServletRequest req) {
 		return index(req);
+	}
+
+	@RequestMapping("/uilogin")
+	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		return new ModelAndView("login");
+	}
+
+	@RequestMapping("/logoutPage")
+	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		return null;
 	}
 }
