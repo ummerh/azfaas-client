@@ -97,11 +97,11 @@ public class OpenIdController {
 
 		// Create RSA-signer with the private key
 		JWSSigner signer = new RSASSASigner(rsaJWK);
-		JWTClaimsSet claimsSet = new JWTClaimsSet.Builder().subject("ummerh").issuer(config.getIssuer())
+		JWTClaimsSet claimsSet = new JWTClaimsSet.Builder().subject("demouser").issuer(config.getIssuer())
 				.expirationTime(new Date(new Date().getTime() + (60 * 60 * 1000))).claim("ver", "1.0")
 				.audience(client_id).claim("nonce", nonce).issueTime(new Date()).claim("idp_access_token", refreshToken)
-				.claim("idp", "azfaas-idp").claim("name", "ummerh").claim("oid", "ummerh")
-				.claim("given_name", "Harshakumar Ummerpillai").claim("emails", "ummerh@email.com").build();
+				.claim("idp", "azfaas-idp").claim("name", "demouser").claim("oid", "demouser")
+				.claim("given_name", "Demo User").claim("emails", "demouser@email.com").build();
 		// create the signer
 		SignedJWT signedJWT = new SignedJWT(new JWSHeader.Builder(JWSAlgorithm.RS256).keyID(rsaJWK.getKeyID()).build(),
 				claimsSet);
