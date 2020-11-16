@@ -16,7 +16,7 @@ public class OpenIdConfiguration {
 		config.response_types_supported = new String[] { "code", "code token", "code id_token" };
 		config.scopes_supported = new String[] { "openid" };
 		config.subject_types_supported = new String[] { "pairwise" };
-		config.id_token_signing_alg_values_supported = new String[] { "RSA256" };
+		config.id_token_signing_alg_values_supported = new String[] { "RS256" };
 		config.token_endpoint_auth_methods_supported = new String[] { "client_secret_post" };
 		config.claims_supported = new String[] { "idp", "emails", "idp_access_token", "oid", "sub", "name",
 				"given_name", "tfp", "iss", "iat", "exp", "aud", "acr", "nonce", "auth_time" };
