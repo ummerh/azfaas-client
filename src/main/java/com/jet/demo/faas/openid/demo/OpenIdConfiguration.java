@@ -13,7 +13,7 @@ public class OpenIdConfiguration {
 		config.token_endpoint = baseUrl + "/oauth2/v2.0/token";
 		config.jwks_uri = baseUrl + "/discovery/v2.0/keys";
 		config.response_modes_supported = new String[] { "query", "fragment", "form_post" };
-		config.response_types_supported = new String[] { "code", "code token", "code id_token" };
+		config.response_types_supported = new String[] { "code", "code id_token" };
 		config.scopes_supported = new String[] { "openid" };
 		config.subject_types_supported = new String[] { "pairwise" };
 		config.id_token_signing_alg_values_supported = new String[] { "RS256" };

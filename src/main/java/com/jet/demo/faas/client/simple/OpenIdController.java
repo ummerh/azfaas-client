@@ -127,10 +127,25 @@ public class OpenIdController {
 		session.setAttribute("code", code);
 		String refreshToken = UUID.randomUUID().toString();
 		session.setAttribute("refresh_token", refreshToken);
-		nonces.put(code, session.getAttribute("nonce").toString());
+		String client_id = session.getAttribute("client_id").toString();
+		String nonce = session.getAttribute("nonce").toString();
+		OpenIdConfiguration config = OpenIdConfiguration.DEFAULT(appUrl + "/idp");
+		nonces.put(code, nonce);
+		// Create RSA-signer with the private key
+		JWSSigner signer = new RSASSASigner(rsaJWK);
+		JWTClaimsSet claimsSet = new JWTClaimsSet.Builder().subject("demouser").issuer(config.getIssuer())
+				.expirationTime(new Date(new Date().getTime() + (60 * 60 * 1000))).claim("ver", "1.0")
+				.audience(client_id).claim("nonce", nonce).issueTime(new Date()).claim("idp_access_token", refreshToken)
+				.claim("idp", "azfaas-idp").claim("name", "demouser").claim("oid", "demouser")
+				.claim("given_name", "Demo User").claim("emails", "demouser@email.com").build();
+		// create the signer
+		SignedJWT signedJWT = new SignedJWT(new JWSHeader.Builder(JWSAlgorithm.RS256).keyID(rsaJWK.getKeyID()).build(),
+				claimsSet);
+		signedJWT.sign(signer);
+		String jwtToken = signedJWT.serialize();
 		refresh_tokens.put(code, refreshToken);
-		return new RedirectView(session.getAttribute("redirect_uri") + "?code=" + code + "&id_token=" + refreshToken
-				+ "&token=" + refreshToken + "&state=" + session.getAttribute("state"));
+		return new RedirectView(session.getAttribute("redirect_uri") + "?code=" + jwtToken + "&id_token=" + jwtToken
+				+ "&state=" + session.getAttribute("state"));
 	}
 
 }

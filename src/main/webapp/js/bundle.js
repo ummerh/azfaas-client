@@ -39058,7 +39058,13 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
         className: "navbar-nav navbar-right"
       }, /*#__PURE__*/React.createElement("li", {
         className: "nav-item nav-link"
-      }, givenName ? givenName : ''))));
+      }, givenName ? givenName : ''), /*#__PURE__*/React.createElement("li", {
+        className: "nav-item"
+      }, /*#__PURE__*/React.createElement("a", {
+        className: "nav-link disabled",
+        href: "#",
+        "aria-disabled": "true"
+      }, "v0.0.1")))));
     }
   }]);
 
