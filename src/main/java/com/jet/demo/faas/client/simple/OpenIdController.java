@@ -124,13 +124,12 @@ public class OpenIdController {
 			@RequestParam String userPassword) throws Exception {
 		HttpSession session = req.getSession();
 		String code = UUID.randomUUID().toString();
-		session.setAttribute("code", code);
 		String refreshToken = UUID.randomUUID().toString();
-		session.setAttribute("refresh_token", refreshToken);
-		nonces.put(code, session.getAttribute("nonce").toString());
+		String nonce = session.getAttribute("nonce").toString();
+		nonces.put(code, nonce);
 		refresh_tokens.put(code, refreshToken);
-		return new RedirectView(session.getAttribute("redirect_uri") + "?code=" + code + "&id_token=" + refreshToken
-				+ "&token=" + refreshToken + "&state=" + session.getAttribute("state"));
+		return new RedirectView(session.getAttribute("redirect_uri") + "?code=" + code + "&state="
+				+ session.getAttribute("state") + "&refresh_token=" + refreshToken);
 	}
 
 }
